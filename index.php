@@ -6,7 +6,7 @@
     public $cognome;
     function fn() {
         return 'Sono il metodo di istanza';
-    }
+}
 } */
 
 //$ Creazione istanze (oggetti)
@@ -18,6 +18,7 @@ var_dump($persona2);
 echo '<br>';
 $persona3 = Persona;
 var_dump($persona3); */
+
 
 
 //$ Accedere ai valori dei membri di istanza
@@ -71,25 +72,39 @@ $libro1 = new Libro;
 echo $libro1->dettagliLibro(); */
 
 
-    /* //$ Costruttori
-    class Libro {
-        public function __construct($__titolo, $__autore, $__genere, $__anno) {
-            $this->titolo = $__titolo;
-            $this->autore = $__autore;
-            $this->genere = $__genere;
-            $this->anno = $__anno;
-        }
-        public $titolo;
-        public $autore;
-        public $genere;
-        public $anno;
-        public function stampaTitolo() {
-            return ("Titolo: $this->titolo, Autore: $this->autore,
-            Genere: $this->genere, Anno di pubblicazione: $this->anno");
-        }
+//$ Inizializzare proprietà all'interno dei metodi
+class Libro {
+    public $titolo;
+    public $autore;
+    public function inizializza($__titolo, $__autore) {
+        $this->titolo = $__titolo;
+        $this->autore = $__autore;
     }
-    //$libro1 = new Libro;
-    echo $libro1->stampaTitolo(); */
+}
+$libro1 = new Libro;
+$libro1->inizializza('Il Signore degli Anelli', 'J.R.R. Tolkien');
+echo '<pre>'; print_r($libro1); echo '</pre>';
+
+
+/* //$ Costruttori
+class Libro {
+    public function __construct($__titolo, $__autore, $__genere, $__anno) {
+        $this->titolo = $__titolo;
+        $this->autore = $__autore;
+        $this->genere = $__genere;
+        $this->anno = $__anno;
+    }
+    public $titolo;
+    public $autore;
+    public $genere;
+    public $anno;
+    public function stampaTitolo() {
+        return ("Titolo: $this->titolo, Autore: $this->autore,
+        Genere: $this->genere, Anno di pubblicazione: $this->anno");
+    }
+}
+//$libro1 = new Libro;
+echo $libro1->stampaTitolo(); */
 
 
 
