@@ -73,7 +73,7 @@ echo $libro1->dettagliLibro(); */
 
 
 //$ Inizializzare proprietà all'interno dei metodi
-class Libro {
+/* class Libro {
     public $titolo;
     public $autore;
     public function inizializza($__titolo, $__autore) {
@@ -83,54 +83,69 @@ class Libro {
 }
 $libro1 = new Libro;
 $libro1->inizializza('Il Signore degli Anelli', 'J.R.R. Tolkien');
-echo '<pre>'; print_r($libro1); echo '</pre>';
+echo '<pre>'; print_r($libro1); echo '</pre>'; */
 
 
-/* //$ Costruttori
-class Libro {
+//$ Costruttore
+/* class Libro {
+    function __construct() {
+        echo "Costruttore invocato, oggetto creato.";
+    }
+}
+$libro1 = new Libro(); */
+
+/* class Libro{
+    public $titolo;
+    public $autore;
+    public $genere;
+    public $anno;
+    public function __construct($__titolo, $__autore) {
+        $this->titolo = $__titolo;
+        $this->autore = $__autore;
+    }
+    public function stampaTitolo() {
+        return ("Titolo: $this->titolo <br> Autore: $this->autore <br>
+        Genere: $this->genere <br> Anno di pubblicazione: $this->anno");
+    }
+}
+$libro1 = new Libro("Orgoglio e Pregiudizio", "Jane Austen");
+echo $libro1->stampaTitolo(); */
+
+
+//$ Creazione oggetti personalizzati
+/* class Libro{
+    public $titolo;
+    public $autore;
+    public $genere;
+    public $anno;
     public function __construct($__titolo, $__autore, $__genere, $__anno) {
         $this->titolo = $__titolo;
         $this->autore = $__autore;
         $this->genere = $__genere;
         $this->anno = $__anno;
-    }
-    public $titolo;
-    public $autore;
-    public $genere;
-    public $anno;
-    public function stampaTitolo() {
-        return ("Titolo: $this->titolo, Autore: $this->autore,
-        Genere: $this->genere, Anno di pubblicazione: $this->anno");
+        echo "Titolo: $this->titolo <br> Autore: $this->autore <br>
+        Genere: $this->genere <br> Anno di pubblicazione: $this->anno<br><br>";
     }
 }
-//$libro1 = new Libro;
-echo $libro1->stampaTitolo(); */
+$libro1 = new Libro("Il Signore degli Anelli", "J.R.R. Tolkien", "Fantasy", "1954-1955");
+$libro2 = new Libro("Orgoglio e Pregiudizio", "Jane Austen", "Romanzo storico", "1813");
+$libro3 = new Libro("Il Piccolo Principe", "Antoine de Saint-Exupéry", "Fantastico", "1943");
+$libro4 = new Libro("1984", "George Orwell", "Dystopia, distopia", "1949");
+$libro = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magico realismo, romanzo storico", "1967"); */
 
 
-
-/*
-Titolo: Il Signore degli Anelli
-Autore: J.R.R. Tolkien
-Genere: Fantasy
-Anno: 1954-1955
-
-Titolo: Orgoglio e Pregiudizio
-Autrice: Jane Austen
-Genere: Romanzo storico
-Anno: 1813
-
-Titolo: Il Piccolo Principe
-Autore: Antoine de Saint-Exupéry
-Genere: Fantastico
-Anno: 1943
-
-Titolo: 1984
-Autore: George Orwell
-Genere: Dystopia, distopia
-Anno: 1949
-
-Titolo: Cent'anni di solitudine
-Autore: Gabriel García Márquez
-Genere: Magico realismo, romanzo storico
-Anno: 1967 */
+//$ Distruttore
+/* class Libro {
+    public $titolo;
+    function __construct($__titolo) {
+        echo "Costruttore invocato, oggetto creato.";
+        $this->titolo = $__titolo;
+    }
+    function __destruct() {
+        echo "*** $this->titolo è stato distrutto***";
+    }
+}
+$libro1 = new Libro("1984");
+echo '<pre>'; print_r($libro1); echo '</pre>';
+ */
 
