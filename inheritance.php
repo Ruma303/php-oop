@@ -116,3 +116,72 @@ echo $user->getPersonaInfo();
 echo '<pre>'; print_r($user); echo '</pre>'; */
 
 
+
+//% Membri di classe: static
+
+//$ Proprietà statiche (di classe)
+/* class Alunno {
+    private static $count;
+    private $nome;
+    public function __construct($__nome){
+        $this->nome = $__nome;
+        self::$count++;
+        printf("ID: %d, alunno $this->nome creato.<br>", self::$count);
+    }
+}
+
+$alunno1 = new Alunno("Gianpiero");
+$alunno2 = new Alunno("Annalaura");
+$alunno3 = new Alunno("Enzo"); */
+
+
+//? Senza l'utilizzo di static
+/* class Alunno {
+    private $count = 0;
+    private $nome;
+    public function __construct($__nome){
+        $this->nome = $__nome;
+        $this->count++;
+        printf("ID: %d, alunno $this->nome creato.<br>", $this->count);
+    }
+}
+$alunno1 = new Alunno("Gianpiero");
+$alunno2 = new Alunno("Annalaura");
+$alunno3 = new Alunno("Enzo"); */
+
+
+//$ Metodi statici (di classe)
+
+//? Senza istanziare classi
+
+/* class Persona {
+    public static function saluta() {
+        return "Ciao a tutti";
+    }
+}
+echo Persona::saluta(); */
+// Ciao a tutti
+
+
+//? Istanziando classi
+/* class Convertitore {
+    private static $conversioni = [
+        'mm' => 0.001,
+        'cm' => 0.01,
+        'dm' => 0.1,
+        'm'  => 1,
+        'dam' => 10,
+        'hm' => 100,
+        'km' => 1000,
+    ];
+    private $valoreConvertito;
+    public function __construct($valoreInMetri, $unita) {
+        if (!isset(self::$conversioni[$unita])) {
+            "Errore: Unità non supportata: $unita";
+        } else {
+            echo $this->valoreConvertito = $valoreInMetri / self::$conversioni[$unita] . '<br>' ;
+        }
+    }
+}
+$convertitore = new Convertitore(1, 'mm'); // 1000mm
+$convertitore = new Convertitore(1, 'km'); // 0.001Km */
