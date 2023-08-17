@@ -187,6 +187,36 @@ $convertitore = new Convertitore(1, 'mm'); // 1000mm
 $convertitore = new Convertitore(1, 'km'); // 0.001Km */
 
 
+//? Late static binding
+/* class Persona {
+    public static $count = 0;
+    public function __construct(){
+        self::$count++;
+        printf("Persona %d: creata.<br>", self::$count);
+    }
+}
+$persona1 = new Persona;
+$persona2 = new Persona;
+
+class Alunno extends Persona {
+    public static $count = 0;
+    private $nome;
+    public function __construct($nome){
+        $this->nome = $nome;
+        static::$count++;
+        printf("Alunno %d: $this->nome creato.<br>", static::$count);
+    }
+}
+$alunno1 = new Alunno("Gianpiero");
+$alunno2 = new Alunno("Annalaura");
+$alunno3 = new Alunno("Enzo");
+
+echo 'Persone create: ' . Persona::$count . '<br>';
+echo 'Alunni creati: ' . Alunno::$count; */
+
+
+
+
 //% Override
 /* class Persona {
     public $nome;
