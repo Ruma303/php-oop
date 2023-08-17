@@ -1,15 +1,5 @@
 <?php
 
-//% Costanti
-/* class Corso {
-    const PHP = 'Corso di PHP';
-    const MY_SQL = 'Corso di MySQL';
-    public static function infoCorso() {
-        echo self::PHP . '<br>';
-    }
-}
-Corso::infoCorso(); // Corso di PHP
-echo Corso::MY_SQL; // Corso di MySQL */
 
 
 

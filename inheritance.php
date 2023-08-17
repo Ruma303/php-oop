@@ -276,3 +276,15 @@ $alunno3 = new Alunno("Enzo");
 
 echo 'Persone create: ' . Persona::$count . '<br>';
 echo 'Alunni creati: ' . Alunno::$count; */
+
+
+//% Costanti
+/* class Corso {
+    const PHP = 'Corso di PHP';
+    const MY_SQL = 'Corso di MySQL';
+    public static function infoCorso() {
+        echo self::PHP . '<br>';
+    }
+}
+Corso::infoCorso(); // Corso di PHP
+echo Corso::MY_SQL; // Corso di MySQL */
