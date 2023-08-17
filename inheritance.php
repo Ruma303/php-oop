@@ -57,20 +57,20 @@ $obj->accessProtected(); */
 
 
 //$ private
-    /* class SuperClass {
-        private $privateProperty = 'Sono privata.';
-        private function privateMethod() {
-            return 'Anch\'io sono privata';
-        }
+/* class SuperClass {
+    private $privateProperty = 'Sono privata.';
+    private function privateMethod() {
+        return 'Anch\'io sono privata';
     }
-    class SubClass extends SuperClass {} */
-    /* $obj = new SubClass();
-    echo $obj->$privateProperty;
-    echo $obj->privateMethod(); */
+}
+class SubClass extends SuperClass {} */
+/* $obj = new SubClass();
+echo $obj->$privateProperty;
+echo $obj->privateMethod(); */
 
-    /*$super = new SuperClass();
-    echo $super->$privateProperty;
-    echo $super->privateMethod; */
+/*$super = new SuperClass();
+echo $super->$privateProperty;
+echo $super->privateMethod; */
 
 
 //% Setters & Getters
@@ -114,6 +114,29 @@ $user = new Persona("Mario");
 $user->setCognome("Rossi");
 echo $user->getPersonaInfo();
 echo '<pre>'; print_r($user); echo '</pre>'; */
+
+
+
+//% Overriding
+/* class Persona {
+    public $nome;
+    function __construct($n){
+        $this->nome = $n;
+    }
+    function stampaInfo(){
+        echo "<p>Nome: $this->nome</p>";
+    }
+}
+class Studente extends Persona{
+    public $scuola = "Alberghiero";
+    function stampaInfo(){
+        echo "<p>Nome: $this->nome,
+        Frequenta: $this->scuola</p>";
+    }
+}
+$studente = new Studente("Mario");
+$studente->stampaInfo(); */
+
 
 
 
@@ -187,7 +210,47 @@ $convertitore = new Convertitore(1, 'mm'); // 1000mm
 $convertitore = new Convertitore(1, 'km'); // 0.001Km */
 
 
-//? Late static binding
+//$ parent
+    /* class Genitore {
+        public function myMethod() {
+            echo "myMethod() di Genitore attivato.<br>";
+        }
+    }
+    class Figlio extends Genitore {
+        public function myMethod() {
+            parent::myMethod();
+            echo "myMethod() di Figlio attivato.<br>";
+        }
+    }
+    $figlio1 = new Figlio;
+    $figlio1->myMethod(); */
+
+
+//* Richiamare il costruttore della classe genitore
+/* class Articolo {
+    protected $range;
+    protected function __construct($range) {
+        $this->range = $range;
+        echo "Costruttore di Articolo chiamato.<br>";
+    }
+}
+class Giocattolo extends Articolo {
+    protected $product;
+    public function __construct($product) {
+        parent::__construct("10-14");
+        $this->product = $product;
+        echo "Costruttore di Giocattolo chiamato.<br>";
+    }
+    public function itemInfo() {
+        return "Prodotto: $this->product | Range di età: {$this->range} anni.<br>";
+    }
+}
+$macchinina = new Giocattolo("Macchinina");
+echo $macchinina->itemInfo(); */
+
+
+
+//$ Late static binding
 /* class Persona {
     public static $count = 0;
     public function __construct(){
@@ -213,28 +276,3 @@ $alunno3 = new Alunno("Enzo");
 
 echo 'Persone create: ' . Persona::$count . '<br>';
 echo 'Alunni creati: ' . Alunno::$count; */
-
-
-
-
-//% Override
-/* class Persona {
-    public $nome;
-    function __construct($n){
-        $this->nome = $n;
-    }
-    function stampaInfo(){
-        echo "<p>Nome: $this->nome</p>";
-    }
-}
-class Studente extends Persona{
-    public $scuola = "Alberghiero";
-    function stampaInfo(){
-        echo "<p>Nome: $this->nome,
-        Frequenta: $this->scuola</p>";
-    }
-}
-$studente = new Studente("Mario");
-$studente->stampaInfo(); */
-
-
