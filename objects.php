@@ -100,3 +100,44 @@ foreach($personaggi as $personaggio) {
     echo $personaggio->getCharacter();
 }
 echo '</ul>'; */
+
+
+//% Confronto fra oggetti
+
+//$ Confronto tra istanze di una classe
+/* class MyClass {
+    public $prop;
+}
+$a = new MyClass;
+$a->prop = 1;
+$b = new MyClass;
+$b->prop = 1;
+var_dump($a == $b); // true
+var_dump($a === $b); // false
+$c = $a;
+var_dump($a === $c); // true */
+
+
+
+//$ Confrontare oggetti personalizzati
+
+/* class User {
+    public $id;
+    public $name;
+    public function uguale(User $other) {
+        //! Due utenti sono considerati uguali se hanno lo stesso ID
+        return $this->id == $other->id;
+    }
+}
+$user1 = new User;
+$user1->id = 1;
+$user1->name = 'Alice';
+$user2 = new User;
+$user2->id = 1;
+$user2->name = 'Bob';
+$user3 = new User;
+$user3->id = 2;
+$user3->name = 'Charlie';
+var_dump($user1->uguale($user2)); // true
+var_dump($user1->uguale($user3)); // false */
+
