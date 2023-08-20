@@ -141,3 +141,57 @@ $user3->name = 'Charlie';
 var_dump($user1->uguale($user2)); // true
 var_dump($user1->uguale($user3)); // false */
 
+
+
+//% Clonazione di oggetti
+
+/* class User {
+    public $username;
+    function __construct($n) {
+        $this->username=$n;
+    }
+}
+$user1 = new User("Ariel");
+$user2 = clone $user1; */
+//echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
+/* echo '<pre>';
+print_r($user1);
+echo '</pre><br>';
+echo '<pre>';
+print_r($user2);
+echo '</pre><br>'; */
+/* $user2->username = "Mickey";
+echo $user1->username . '<br>';
+echo $user2->username . '<br>';
+*/
+
+
+//$ Override clonazione
+
+
+    /* class Person {
+        public $name;
+        function __construct($n) {
+            $this->name=$n;
+        }
+    }
+    class User {
+        public $person;
+        function __clone(){
+            $this->person = clone $this->person;
+        }
+    }
+    $person1 = new Person("Ariel");
+    $user1 = new User;
+    $user1->person = $person1;
+    $user2= clone $user1;
+    $person1->name = "Hugo";
+    echo '<pre>'; print_r($user1); echo '</pre><br>';
+    echo '<pre>'; print_r($user2); echo '</pre><br>'; */
+
+
+
+
+
+
+    //var_dump($user1 == $user2);
