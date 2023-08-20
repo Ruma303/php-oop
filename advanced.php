@@ -90,46 +90,71 @@ echo $cane->faVerso(); */
 
 
 //% Interfacce
+/* interface Lesson {
+    public function setLessons(array $lessons): void;
+    public function getLessons(): void;
+}
 
-    /* interface Lesson {
-        public function setLessons(array $lessons): void;
-        public function getLessons(): void;
+interface Documentation {
+    public function setDocumentation(array $documentations): void;
+    public function getDocumentation(): void;
+}
+
+class Laravel implements Lesson, Documentation {
+    private $lessons = [];
+    private $documentation = [];
+    public function setLessons(array $lessons): void {
+        $this->lessons = $lessons;
     }
-
-    interface Documentation {
-        public function setDocumentation(array $documentations): void;
-        public function getDocumentation(): void;
+    public function getLessons(): void {
+        echo '<h3>Lezioni del corso: </h3><ul>';
+        foreach ($this->lessons as $lesson) {
+            echo '<li>' . $lesson . '</li>';
+        }echo '</ul>';
     }
+    public function setDocumentation(array $documentations): void {
+        $this->documentation = $documentations;
+    }
+    public function getDocumentation(): void {
+        echo '<h3>Documentazione del corso: </h3><ul>';
+        foreach ($this->documentation as $documentation) {
+            echo '<li>' . $documentation . '</li>';
+        } echo '</ul>';
+    }
+}
 
-    class Laravel implements Lesson, Documentation {
-        private $lessons = [];
-        private $documentation = [];
-        public function setLessons(array $lessons): void {
-            $this->lessons = $lessons;
-        }
-        public function getLessons(): void {
-            echo '<h3>Lezioni del corso: </h3><ul>';
-            foreach ($this->lessons as $lesson) {
-                echo '<li>' . $lesson . '</li>';
-            }echo '</ul>';
-        }
-        public function setDocumentation(array $documentations): void {
-            $this->documentation = $documentations;
-        }
-        public function getDocumentation(): void {
-            echo '<h3>Documentazione del corso: </h3><ul>';
-            foreach ($this->documentation as $documentation) {
-                echo '<li>' . $documentation . '</li>';
-            } echo '</ul>';
+echo '<h2>Benvenuto/a al corso di Laravel!</h2>';
+$laravel = new Laravel();
+$laravel->setLessons(['Routes', 'MVC', 'Blade', 'Eloquent', 'CRUD', 'API', 'Authentication']);
+$laravel->getLessons();
+$laravel->setDocumentation(['Installazione', 'Configurazione', 'Vite.js', 'Middleware']);
+$laravel->getDocumentation(); */
+
+
+
+//% Traits
+
+    trait Inizializzazione {
+        public $nomeClasse;
+        public function __construct($class) {
+            $this->nomeClasse = $class;
         }
     }
+    trait Comportamenti {
+        public function saluta() {
+            echo "Ciao! Sono il metodo: " . __METHOD__
+            . "<br> della Trait: " . __TRAIT__
+            . "<br> e sono stato chiamato in: "
+            . $this->nomeClasse . "<br><br>";
+        }
+    }
+    class ClasseA { use Inizializzazione, Comportamenti; }
+    class ClasseB { use Inizializzazione, Comportamenti; }
+    $a = new ClasseA("ClasseA"); $a->saluta();
+    $b = new ClasseB("ClasseB"); $b->saluta();
 
-    echo '<h2>Benvenuto/a al corso di Laravel!</h2>';
-    $laravel = new Laravel();
-    $laravel->setLessons(['Routes', 'MVC', 'Blade', 'Eloquent', 'CRUD', 'API', 'Authentication']);
-    $laravel->getLessons();
-    $laravel->setDocumentation(['Installazione', 'Configurazione', 'Vite.js', 'Middleware']);
-    $laravel->getDocumentation(); */
+
+
 
 
 
