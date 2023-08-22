@@ -134,24 +134,63 @@ $laravel->getDocumentation(); */
 
 //% Traits
 
-    trait Inizializzazione {
-        public $nomeClasse;
-        public function __construct($class) {
-            $this->nomeClasse = $class;
-        }
+/* trait Inizializzazione {
+    public $nomeClasse;
+    public function __construct($class) {
+        $this->nomeClasse = $class;
     }
-    trait Comportamenti {
-        public function saluta() {
-            echo "Ciao! Sono il metodo: " . __METHOD__
-            . "<br> della Trait: " . __TRAIT__
-            . "<br> e sono stato chiamato in: "
-            . $this->nomeClasse . "<br><br>";
-        }
+}
+trait Comportamenti {
+    public function saluta() {
+        echo "Ciao! Sono il metodo: " . __METHOD__
+        . "<br> della Trait: " . __TRAIT__
+        . "<br> e sono stato chiamato in: "
+        . $this->nomeClasse . "<br><br>";
     }
-    class ClasseA { use Inizializzazione, Comportamenti; }
-    class ClasseB { use Inizializzazione, Comportamenti; }
-    $a = new ClasseA("ClasseA"); $a->saluta();
-    $b = new ClasseB("ClasseB"); $b->saluta();
+}
+class ClasseA { use Inizializzazione, Comportamenti; }
+class ClasseB { use Inizializzazione, Comportamenti; }
+$a = new ClasseA("ClasseA"); $a->saluta();
+$b = new ClasseB("ClasseB"); $b->saluta(); */
+
+
+
+//$ insteadof e as
+/* trait Trait1 {
+    public function fn() {
+        echo "Funzione attivata dal trait: "
+        . __TRAIT__ . "<br><br>";
+    }
+}
+trait Trait2 {
+    public function fn() {
+        echo "Funzione attivata dal trait: "
+        . __TRAIT__ . "<br><br>";
+    }
+}
+class ClasseA {
+    use Trait1, Trait2 {
+        Trait2::fn insteadof Trait1;
+        Trait1::fn as fn1;
+    }
+}
+$instance = new ClasseA;
+$instance->fn();
+$instance->fn1(); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

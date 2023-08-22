@@ -73,7 +73,7 @@ echo $super->$privateProperty;
 echo $super->privateMethod; */
 
 
-//% Setters & Getters
+//% Accessor e Mutator methods
 /* class SuperClass {
     private $privateProperty = 'Sono privata.';
     private function privateMethod() {
