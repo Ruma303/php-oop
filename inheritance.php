@@ -211,19 +211,19 @@ $convertitore = new Convertitore(1, 'km'); // 0.001Km */
 
 
 //$ parent
-    /* class Genitore {
-        public function myMethod() {
-            echo "myMethod() di Genitore attivato.<br>";
-        }
+/* class Genitore {
+    public function myMethod() {
+        echo "myMethod() di Genitore attivato.<br>";
     }
-    class Figlio extends Genitore {
-        public function myMethod() {
-            parent::myMethod();
-            echo "myMethod() di Figlio attivato.<br>";
-        }
+}
+class Figlio extends Genitore {
+    public function myMethod() {
+        parent::myMethod();
+        echo "myMethod() di Figlio attivato.<br>";
     }
-    $figlio1 = new Figlio;
-    $figlio1->myMethod(); */
+}
+$figlio1 = new Figlio;
+$figlio1->myMethod(); */
 
 
 //* Richiamare il costruttore della classe genitore

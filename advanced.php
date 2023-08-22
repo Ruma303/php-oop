@@ -133,7 +133,6 @@ $laravel->getDocumentation(); */
 
 
 //% Traits
-
 /* trait Inizializzazione {
     public $nomeClasse;
     public function __construct($class) {
@@ -179,18 +178,88 @@ $instance->fn();
 $instance->fn1(); */
 
 
+//$ Approfondimenti Traits
+//* Usare metodi statici nei Traits
+/* trait Trait1 {
+    public static function fn1(){
+        echo "Metodo statico attivato: " . __METHOD__;
+    }
+}
+class ClasseA {
+    use Trait1;
+    public function fn2() {
+        self::fn1();
+    }
+}
+$a = new ClasseA;
+$a->fn2();
+ */
+
+//* Usare metodi astratti nei Traits
+/* trait Trait1 {
+    abstract public function fn1();
+}
+class ClasseA {
+    use Trait1;
+    public function fn1() {
+        echo "Metodo astratto richiamato";
+    }
+}
+$a = new ClasseA;
+$a->fn1(); */
 
 
+//* Utilizzare argomenti e proprietà nei Trait
+/* trait Trait1 {
+    public $p1;
+}
+class ClasseA {
+    use Trait1;
+    public function fn1($p1) {
+        $this->p1 = $p1;
+        echo "\$p1: ", $p1;
+    }
+}
+$a = new ClasseA;
+$a->fn1("Hello World"); */
+
+//* Utilizzare proprietà di classe nei metodi del Trait
+//. Cattiva pratica
+/* trait Trait1 {
+    public function fn1($p1){
+        $this->p1 = $p1;
+        echo "\$p1: ", $p1;
+    }
+}
+class ClasseA {
+    public $p1;
+    use Trait1;
+
+}
+$a = new ClasseA;
+$a->fn1("Hello World"); */
 
 
+//% Costruttore privato
+/* class Classe {
+    private function __construct() {
+        echo "Costruttore privato richiamato!<br>";
+    }
+    public static function createWithSelf() {
+        return new self();
+    }
+    public static function createWithStatic() {
+        return new static();
+    }
+}
+$istanza1 = Classe::createWithSelf();
+$istanza2 = Classe::createWithStatic();
 
-
-
-
-
-
-
-
+class Estesa extends Classe {}
+$istanza3 = Estesa::createWithSelf();
+$istanza4 = Estesa::createWithStatic();
+echo print_r($istanza3) . '<br>';
+echo print_r($istanza4) . '<br>'; */
 
 
 
