@@ -143,8 +143,27 @@ var_dump($user1->uguale($user3)); // false */
 
 
 
-//% Clonazione di oggetti
-    class User {
+//% Copiare gli oggetti
+//$ Shallow Copy
+    /* class User {
+        public $username;
+        function __construct($n) {
+            $this->username=$n;
+        }
+    }
+    $user1 = new User("Ariel");
+    $user2 = $user1;
+    echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
+    echo '<br>';
+    echo print_r($user1); echo '<br>';
+    echo print_r($user2); echo '<br>';
+    $user2->username = "Mickey";
+    echo $user1->username . '<br>';
+    echo $user2->username . '<br>';
+ */
+
+//$ Clonazione di oggetti (Deep copy)
+    /* class User {
         public $username;
         function __construct($n) {
             $this->username=$n;
@@ -161,7 +180,7 @@ var_dump($user1->uguale($user3)); // false */
     echo '</pre><br>';
     $user2->username = "Mickey";
     echo $user1->username . '<br>';
-    echo $user2->username . '<br>';
+    echo $user2->username . '<br>'; */
 
 
 
@@ -187,8 +206,3 @@ echo '<pre>'; print_r($user1); echo '</pre><br>';
 echo '<pre>'; print_r($user2); echo '</pre><br>'; */
 
 //var_dump($user1 == $user2);
-
-
-
-
-//$ Shallow e Deep Copy

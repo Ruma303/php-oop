@@ -4,38 +4,41 @@
 /* class Persona {
     public $nome;
     public $cognome;
-    function fn() {
-        return 'Sono il metodo di istanza';
-}
+    public function fn() {
+        return "Ciao";
+    }
 } */
+
 
 //$ Creazione istanze (oggetti)
 /* $persona1 = new Persona();
 var_dump($persona1);
 echo '<br>';
+
 $persona2 = new Persona;
 var_dump($persona2);
 echo '<br>';
+
 $persona3 = Persona;
 var_dump($persona3); */
 
 
 
 //$ Accedere ai valori dei membri di istanza
-/* $persona1 = new Persona();
-$persona1->nome = "Alfonso";
-$persona1->cognome = "Donati";
-echo '<pre>';
-print_r($persona1);
-echo '</pre><br>'; */
+    /* $persona1 = new Persona;
+    $persona1->nome = "Alfonso";
+    $persona1->cognome = "Donati";
+    echo '<pre>'; print_r($persona1); echo '</pre><br>'; */
 
-/* $persona1->nome = "Alessio";
-echo $persona1->nome; // Alessio */
+    /* $persona1->nome = "Alessio";
+    echo $persona1->nome; // Alessio */
 
 
 //$ Metodi di istanza
-/* $persona1 = new Persona();
-echo $persona1->fn(); */
+/* $persona1 = new Persona;
+echo '<pre>'; print_r($persona1); echo '</pre><br>';
+echo $persona1->fn();
+ */
 
 
 //$ Inizializzazione membri d'istanza
@@ -48,17 +51,20 @@ echo $persona1->fn(); */
         return ("Titolo: $titolo, Autore: $autore,
         Genere: $genere, Anno di pubblicazione: $anno");
     }
-}
+} */
 
-$libro1 = new Libro;
-echo '<pre>'; print_r($libro1); echo '</pre>'; $libro2 = new Libro;
-echo '<pre>'; print_r($libro2); echo '</pre>'; $libro3 = new Libro;
-echo '<pre>'; print_r($libro3); echo '</pre>'; echo $libro3->dettagliLibro();
- */
+/* $libro1 = new Libro;
+echo '<pre>'; print_r($libro1); echo '</pre>';
+$libro2 = new Libro;
+echo '<pre>'; print_r($libro2); echo '</pre>';
+$libro3 = new Libro;
+echo '<pre>'; print_r($libro3); echo '</pre>';
+echo $libro3->dettagliLibro(); */
+
 
 
 //$ $this
-/* class Libro {
+class Libro {
     public $titolo = 'Il Signore degli Anelli';
     public $autore = 'J.R.R. Tolkien';
     public $genere = 'Fantasy';
@@ -68,8 +74,10 @@ echo '<pre>'; print_r($libro3); echo '</pre>'; echo $libro3->dettagliLibro();
         Genere: $this->genere<br> Anno di pubblicazione: $this->anno");
     }
 }
-$libro1 = new Libro;
-echo $libro1->dettagliLibro(); */
+//$libro1 = new Libro;
+//echo '<pre>'; print_r($libro1); echo '</pre><br>';
+//echo $libro1->titolo;
+//echo $libro1->dettagliLibro();
 
 
 //$ Inizializzare proprietà all'interno dei metodi
