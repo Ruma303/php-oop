@@ -144,47 +144,44 @@ var_dump($user1->uguale($user3)); // false */
 
 
 //% Copiare gli oggetti
-//$ Shallow Copy
-    /* class User {
-        public $username;
-        function __construct($n) {
-            $this->username=$n;
-        }
+
+//$ Assegnamento oggetti
+/* class User {
+    public $username;
+    function __construct($n) {
+        $this->username=$n;
     }
-    $user1 = new User("Ariel");
-    $user2 = $user1;
-    echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
-    echo '<br>';
-    echo print_r($user1); echo '<br>';
-    echo print_r($user2); echo '<br>';
-    $user2->username = "Mickey";
-    echo $user1->username . '<br>';
-    echo $user2->username . '<br>';
+}
+$user1 = new User("Ariel");
+$user2 = $user1;
+echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
+echo '<br>';
+echo '<pre>'; print_r($user1); echo '</pre>';
+echo '<pre>'; print_r($user2); echo '</pre>';
+$user2->username = "Mickey";
+echo $user1->username . '<br>';
+echo $user2->username . '<br>'; */
+
+
+//$ Shallow Copy
+/* class User {
+    public $username;
+    function __construct($n) {
+        $this->username=$n;
+    }
+}
+$user1 = new User("Ariel");
+$user2 = clone $user1;
+echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
+echo '<pre>'; print_r($user1); echo '</pre>';
+echo '<pre>'; print_r($user2); echo '</pre>';
+$user2->username = "Mickey";
+echo $user1->username . '<br>';
+echo $user2->username . '<br>';
  */
 
-//$ Clonazione di oggetti (Deep copy)
-    /* class User {
-        public $username;
-        function __construct($n) {
-            $this->username=$n;
-        }
-    }
-    $user1 = new User("Ariel");
-    $user2 = clone $user1;
-    echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
-    echo '<pre>';
-    print_r($user1);
-    echo '</pre><br>';
-    echo '<pre>';
-    print_r($user2);
-    echo '</pre><br>';
-    $user2->username = "Mickey";
-    echo $user1->username . '<br>';
-    echo $user2->username . '<br>'; */
 
-
-
-//$ Override clonazione
+//$ Deep Copy
 /* class Person {
     public $name;
     function __construct($n) {
@@ -200,9 +197,8 @@ class User {
 $person1 = new Person("Ariel");
 $user1 = new User;
 $user1->person = $person1;
-$user2= clone $user1;
+$user2 = clone $user1;
 $person1->name = "Hugo";
-echo '<pre>'; print_r($user1); echo '</pre><br>';
-echo '<pre>'; print_r($user2); echo '</pre><br>'; */
-
-//var_dump($user1 == $user2);
+echo '<pre>'; print_r($user1); echo '</pre>';
+echo '<pre>'; print_r($user2); echo '</pre>';
+var_dump($user1 === $user2); // false */

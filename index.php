@@ -64,7 +64,7 @@ echo $libro3->dettagliLibro(); */
 
 
 //$ $this
-class Libro {
+/* class Libro {
     public $titolo = 'Il Signore degli Anelli';
     public $autore = 'J.R.R. Tolkien';
     public $genere = 'Fantasy';
@@ -73,7 +73,7 @@ class Libro {
         return ("Titolo: $this->titolo<br> Autore: $this->autore<br>
         Genere: $this->genere<br> Anno di pubblicazione: $this->anno");
     }
-}
+} */
 //$libro1 = new Libro;
 //echo '<pre>'; print_r($libro1); echo '</pre><br>';
 //echo $libro1->titolo;
