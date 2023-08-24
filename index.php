@@ -153,6 +153,16 @@ $libro4 = new Libro("1984", "George Orwell", "Dystopia, distopia", "1949");
 $libro = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magico realismo, romanzo storico", "1967"); */
 
 
+
+//% Proprietà promosse
+/* class MyClass {
+    public function __construct(public int $a) {}
+}
+$obj = new MyClass(123);
+echo $obj->a;  // 123 */
+
+
+
 //% Distruttore
 /* class Libro {
     public $titolo;
@@ -167,4 +177,3 @@ $libro = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magic
 $libro1 = new Libro("1984");
 echo '<pre>'; print_r($libro1); echo '</pre>';
  */
-
