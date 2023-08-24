@@ -263,6 +263,62 @@ echo print_r($istanza4) . '<br>'; */
 
 
 
+//% Altri operatori
+
+//$ instanceof
+/* class A {}
+class B {} $b = new B;
+var_dump($b instanceof A); // false
+var_dump($b instanceof B); // true */
+
+/* class A {}
+class B extends A {} $b = new B;
+var_dump($b instanceof A); // true */
+
+/* class A {}
+class B extends A {}
+class C extends B {} $c = new C;
+var_dump($c instanceof A); // true */
+
+//* Interfacce
+/* interface MyInterface {
+    public function getInterface();
+}
+class A implements MyInterface {
+    public function getInterface() {}
+}
+$a = new A;
+var_dump($a instanceof MyInterface); // true */
+
+
+
+//$ get_class()
+/* class A {
+    public function fn() {
+        echo get_class();
+    }
+}
+$a = new A;
+$a->fn(); // A
+class B extends A {} $b = new B;
+class C extends B {} $c = new C;
+echo get_class($b); // B
+echo get_class($c); // C */
+
+
+//$ ::class
+/* class A {
+    public function fn() {
+        echo get_class();
+    }
+}
+$a = new A;
+$a->fn(); // A
+class B extends A {} $b = new B;
+class C extends B {} $c = new C;
+echo $b::class; // B
+echo $c::class; // C
+ */
 
 
 

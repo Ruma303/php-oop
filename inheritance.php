@@ -288,3 +288,4 @@ echo 'Alunni creati: ' . Alunno::$count; */
 }
 Corso::infoCorso(); // Corso di PHP
 echo Corso::MY_SQL; // Corso di MySQL */
+
