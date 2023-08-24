@@ -62,7 +62,6 @@ echo '<pre>'; print_r($libro3); echo '</pre>';
 echo $libro3->dettagliLibro(); */
 
 
-
 //$ $this
 /* class Libro {
     public $titolo = 'Il Signore degli Anelli';
@@ -94,7 +93,19 @@ $libro1->inizializza('Il Signore degli Anelli', 'J.R.R. Tolkien');
 echo '<pre>'; print_r($libro1); echo '</pre>'; */
 
 
-//$ Costruttore
+
+//$ null chaining operator
+/* class Person {
+    public $birthday;
+}
+$person1 = new Person;
+$person1->birthday = new DateTime('10-05-1956');
+$birthday = $person1?->birthday?->format('d-m-Y');
+echo $birthday; */
+
+
+
+//% Costruttori
 /* class Libro {
     function __construct() {
         echo "Costruttore invocato, oggetto creato.";
@@ -142,7 +153,7 @@ $libro4 = new Libro("1984", "George Orwell", "Dystopia, distopia", "1949");
 $libro = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magico realismo, romanzo storico", "1967"); */
 
 
-//$ Distruttore
+//% Distruttore
 /* class Libro {
     public $titolo;
     function __construct($__titolo) {
