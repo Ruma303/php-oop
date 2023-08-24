@@ -321,6 +321,74 @@ echo $c::class; // C
  */
 
 
+//% Classi anonime
+/* $obj = new class {
+    public function hello() {
+        return "Hello, world!";
+    }
+};
+echo $obj->hello(); // Hello, world! */
+
+
+//$ Costruttori delle classi anonime
+/* $obj = new class('Albert') {
+    public function __construct(public string $name) {
+    echo "Ciao $name";
+    }
+};
+echo '<pre>'; print_r($obj); echo '</pre>';
+ */
+
+
+
+//$ Ereditarietà nelle classi anonime
+/* class A {
+    public $age = 34;
+}
+$obj = new class('Albert') extends A {
+    public function __construct(public string $name) {
+    echo "Sono $name e ho ";
+    }
+};
+echo '<pre>'; print_r($obj); echo '</pre>';
+ */
+
+
+//$ Implementazione di interfacce nelle classi anonime
+/* interface MyInterface {
+    public function saluta();
+}
+$obj = new class implements MyInterface {
+    public function saluta() {
+        return 'Ciao!';
+    }
+};
+echo $obj->saluta(); // Ciao! */
+
+
+//$ Classi annidate
+
+/* class MyParent {
+    public int $a = 10;
+    public function info() {
+        return new class($this->a) {
+            public function __construct(public int $a) {}
+            public function getA() {
+                echo $this->a;
+            }
+        };
+    }
+}
+$newMyParent = new MyParent;
+$obj = $newMyParent->info();
+$obj->getA(); // 10 */
+
+
+
+
+
+
+
 
 //% Overloading
 
