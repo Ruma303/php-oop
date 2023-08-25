@@ -56,25 +56,27 @@ class MyChildClass extends MyClass {
     }
 }
 $obj = new MyChildClass();
-$obj->accessProtected(); */
+$obj->accessProtected(); */ //* Metodo accessibile in quanto public
+//$obj->protectedProperty; //. Errore
+//$obj->protectedMethod(); //. Errore
 
 
 
 //$ private
-    /* class SuperClass {
-        private $privateProperty = 'Sono privata.';
-        private function privateMethod() {
-            return 'Anch\'io sono privata';
-        }
+/* class SuperClass {
+    private $privateProperty = 'Sono privata.';
+    private function privateMethod() {
+        return 'Anch\'io sono privata';
     }
-    class SubClass extends SuperClass {
-        public function accessProtected() {
-            echo $this->privateProperty; // Proprietà protetta.
-            echo $this->privateMethod(); // Anch'io sono protetta!
-        }
+}
+class SubClass extends SuperClass {
+    public function accessProtected() {
+        echo $this->privateProperty; //. Errore
+        echo $this->privateMethod(); //. Errore
     }
-    $obj = new SubClass();
-    $obj->accessProtected(); */
+}
+$obj = new SubClass();
+$obj->accessProtected(); */
 
 
 
@@ -99,8 +101,8 @@ $super = new SuperClass();
 echo "Proprietà iniziale: " . $super->getPrivateProperty() . '<br>';
 echo "Metodo iniziale: " . $super->getPrivateMethod() . '<br>';
 $super->setPrivateProperty("Valore cambiato.");
-echo "Proprietà cambiata: " . $super->getPrivateProperty();
- */
+echo "Proprietà cambiata: " . $super->getPrivateProperty(); */
+
 
 //$ Costruttore come setter
 /* class Persona {
@@ -141,9 +143,9 @@ class Studente extends Persona {
     }
 }
 $persona = new Persona("Luigi");
-$persona->stampaInfo();
+$persona->stampaInfo(); // Nome: Luigi
 $studente = new Studente("Mario");
-$studente->stampaInfo(); */
+$studente->stampaInfo(); // Nome: Mario, Frequenta: Alberghiero */
 
 
 
@@ -206,14 +208,14 @@ echo Persona::saluta(); */
     public function __construct($valoreInMetri, $unita) {
         if (isset(self::$conversioni[$unita])) {
             $this->valoreConvertito = $valoreInMetri / self::$conversioni[$unita];
-            echo $this->valoreConvertito . $unita . '<br>';
+            echo $valoreInMetri . 'm = ' . $this->valoreConvertito . $unita . '<br>';
         } else {
             echo "Errore: Unità non supportata: $unita";
         }
     }
 }
-$convertitore1 = new Convertitore(10, 'mm'); // 1000mm
-$convertitore2 = new Convertitore(100, 'km'); // 0.001Km */
+$convertitore1 = new Convertitore(10, 'mm'); // 10m = 10000mm
+$convertitore2 = new Convertitore(100, 'km'); // 100m = 0.1km */
 
 
 //$ parent

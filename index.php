@@ -25,13 +25,13 @@ var_dump($persona3); */
 
 
 //$ Accedere ai valori dei membri di istanza
-    /* $persona1 = new Persona;
-    $persona1->nome = "Alfonso";
-    $persona1->cognome = "Donati";
-    echo '<pre>'; print_r($persona1); echo '</pre><br>'; */
+/* $persona1 = new Persona;
+$persona1->nome = "Alfonso";
+$persona1->cognome = "Donati";
+echo '<pre>'; print_r($persona1); echo '</pre><br>'; */
 
-    /* $persona1->nome = "Alessio";
-    echo $persona1->nome; // Alessio */
+/* $persona1->nome = "Alessio";
+echo $persona1->nome; // Alessio */
 
 
 //$ Metodi di istanza
@@ -96,13 +96,14 @@ echo '<pre>'; print_r($libro1); echo '</pre>';
 
 
 //% Costruttori
-/* class Libro {
+/*  class Libro {
     function __construct() {
-        echo "Costruttore invocato, oggetto creato.";
+        echo "Costruttore invocato e oggetto creato.";
     }
 }
 $libro1 = new Libro; */
 
+//$ Inizializzare le proprietà delle istanze
 /* class Libro {
     public $titolo;
     public $autore;
@@ -118,8 +119,8 @@ $libro1 = new Libro; */
     }
 }
 $libro1 = new Libro("Orgoglio e Pregiudizio", "Jane Austen");
-echo $libro1->stampaInfo(); */
-
+echo $libro1->stampaInfo();
+ */
 
 //$ Creazione oggetti personalizzati
 /* class Libro{
