@@ -174,6 +174,19 @@ echo $obj->a; // 123 */
 //echo $obj->a = 10; // Errore fatale
 
 
+//* Classi readonly
+/* readonly class MyClass {
+    public function __construct(public int $a) {}
+    function getA() {
+        return $this->a;
+    }
+}
+$obj = new MyClass(123);
+echo $obj->a; // 123 */
+
+
+
+
 
 //% Distruttore
 /* class Libro {
