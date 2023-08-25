@@ -8,6 +8,7 @@
         echo "Mangia...<br>";
     }
 }
+
 class Cane extends Animale {
     public $zampe = 4;
     public function abbaia() {
@@ -17,11 +18,13 @@ class Cane extends Animale {
 $mioCane = new Cane();
 $mioCane->mangia(); // Mangia...
 $mioCane->abbaia(); // Abbaia...
+
 $properties = get_object_vars($mioCane);
 echo '<pre>'; print_r($properties); echo '</pre>';
+
 $methods = get_class_methods($mioCane);
-echo '<pre>'; print_r($methods); echo '</pre>';
- */
+echo '<pre>'; print_r($methods); echo '</pre>'; */
+
 
 
 //% Visibilità dei membri
@@ -56,21 +59,24 @@ $obj = new MyChildClass();
 $obj->accessProtected(); */
 
 
-//$ private
-/* class SuperClass {
-    private $privateProperty = 'Sono privata.';
-    private function privateMethod() {
-        return 'Anch\'io sono privata';
-    }
-}
-class SubClass extends SuperClass {} */
-/* $obj = new SubClass();
-echo $obj->$privateProperty;
-echo $obj->privateMethod(); */
 
-/*$super = new SuperClass();
-echo $super->$privateProperty;
-echo $super->privateMethod; */
+//$ private
+    /* class SuperClass {
+        private $privateProperty = 'Sono privata.';
+        private function privateMethod() {
+            return 'Anch\'io sono privata';
+        }
+    }
+    class SubClass extends SuperClass {
+        public function accessProtected() {
+            echo $this->privateProperty; // Proprietà protetta.
+            echo $this->privateMethod(); // Anch'io sono protetta!
+        }
+    }
+    $obj = new SubClass();
+    $obj->accessProtected(); */
+
+
 
 
 //% Accessor e Mutator methods
@@ -92,9 +98,9 @@ echo $super->privateMethod; */
 $super = new SuperClass();
 echo "Proprietà iniziale: " . $super->getPrivateProperty() . '<br>';
 echo "Metodo iniziale: " . $super->getPrivateMethod() . '<br>';
-$super->setPrivateProperty("Valore cambiato");
-echo "Proprietà cambiata: " . $super->getPrivateProperty(); */
-
+$super->setPrivateProperty("Valore cambiato.");
+echo "Proprietà cambiata: " . $super->getPrivateProperty();
+ */
 
 //$ Costruttore come setter
 /* class Persona {
@@ -124,19 +130,20 @@ echo '<pre>'; print_r($user); echo '</pre>'; */
         $this->nome = $n;
     }
     function stampaInfo(){
-        echo "<p>Nome: $this->nome</p>";
+        echo "<p>Nome: $this->nome</p><br>";
     }
 }
-class Studente extends Persona{
+class Studente extends Persona {
     public $scuola = "Alberghiero";
     function stampaInfo(){
         echo "<p>Nome: $this->nome,
-        Frequenta: $this->scuola</p>";
+        Frequenta: $this->scuola</p><br>";
     }
 }
+$persona = new Persona("Luigi");
+$persona->stampaInfo();
 $studente = new Studente("Mario");
 $studente->stampaInfo(); */
-
 
 
 
@@ -144,7 +151,7 @@ $studente->stampaInfo(); */
 
 //$ Proprietà statiche (di classe)
 /* class Alunno {
-    private static $count;
+    private static $count = 0;
     private $nome;
     public function __construct($__nome){
         $this->nome = $__nome;
@@ -152,7 +159,6 @@ $studente->stampaInfo(); */
         printf("ID: %d, alunno $this->nome creato.<br>", self::$count);
     }
 }
-
 $alunno1 = new Alunno("Gianpiero");
 $alunno2 = new Alunno("Annalaura");
 $alunno3 = new Alunno("Enzo"); */
@@ -176,7 +182,6 @@ $alunno3 = new Alunno("Enzo"); */
 //$ Metodi statici (di classe)
 
 //? Senza istanziare classi
-
 /* class Persona {
     public static function saluta() {
         return "Ciao a tutti";
@@ -199,15 +204,16 @@ echo Persona::saluta(); */
     ];
     private $valoreConvertito;
     public function __construct($valoreInMetri, $unita) {
-        if (!isset(self::$conversioni[$unita])) {
-            "Errore: Unità non supportata: $unita";
+        if (isset(self::$conversioni[$unita])) {
+            $this->valoreConvertito = $valoreInMetri / self::$conversioni[$unita];
+            echo $this->valoreConvertito . $unita . '<br>';
         } else {
-            echo $this->valoreConvertito = $valoreInMetri / self::$conversioni[$unita] . '<br>' ;
+            echo "Errore: Unità non supportata: $unita";
         }
     }
 }
-$convertitore = new Convertitore(1, 'mm'); // 1000mm
-$convertitore = new Convertitore(1, 'km'); // 0.001Km */
+$convertitore1 = new Convertitore(10, 'mm'); // 1000mm
+$convertitore2 = new Convertitore(100, 'km'); // 0.001Km */
 
 
 //$ parent
