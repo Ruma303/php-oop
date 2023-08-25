@@ -51,8 +51,8 @@ echo $persona1->fn();
         return ("Titolo: $titolo, Autore: $autore,
         Genere: $genere, Anno di pubblicazione: $anno");
     }
-} */
-
+}
+ */
 /* $libro1 = new Libro;
 echo '<pre>'; print_r($libro1); echo '</pre>';
 $libro2 = new Libro;
@@ -90,18 +90,8 @@ echo $libro3->dettagliLibro(); */
 }
 $libro1 = new Libro;
 $libro1->inizializza('Il Signore degli Anelli', 'J.R.R. Tolkien');
-echo '<pre>'; print_r($libro1); echo '</pre>'; */
-
-
-
-//$ null chaining operator
-/* class Person {
-    public $birthday;
-}
-$person1 = new Person;
-$person1->birthday = new DateTime('10-05-1956');
-$birthday = $person1?->birthday?->format('d-m-Y');
-echo $birthday; */
+echo '<pre>'; print_r($libro1); echo '</pre>';
+ */
 
 
 
@@ -111,9 +101,9 @@ echo $birthday; */
         echo "Costruttore invocato, oggetto creato.";
     }
 }
-$libro1 = new Libro(); */
+$libro1 = new Libro; */
 
-/* class Libro{
+/* class Libro {
     public $titolo;
     public $autore;
     public $genere;
@@ -122,13 +112,13 @@ $libro1 = new Libro(); */
         $this->titolo = $__titolo;
         $this->autore = $__autore;
     }
-    public function stampaTitolo() {
+    public function stampaInfo() {
         return ("Titolo: $this->titolo <br> Autore: $this->autore <br>
         Genere: $this->genere <br> Anno di pubblicazione: $this->anno");
     }
 }
 $libro1 = new Libro("Orgoglio e Pregiudizio", "Jane Austen");
-echo $libro1->stampaTitolo(); */
+echo $libro1->stampaInfo(); */
 
 
 //$ Creazione oggetti personalizzati
@@ -150,18 +140,28 @@ $libro1 = new Libro("Il Signore degli Anelli", "J.R.R. Tolkien", "Fantasy", "195
 $libro2 = new Libro("Orgoglio e Pregiudizio", "Jane Austen", "Romanzo storico", "1813");
 $libro3 = new Libro("Il Piccolo Principe", "Antoine de Saint-Exupéry", "Fantastico", "1943");
 $libro4 = new Libro("1984", "George Orwell", "Dystopia, distopia", "1949");
-$libro = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magico realismo, romanzo storico", "1967"); */
+$libro5 = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magico realismo, romanzo storico", "1967"); */
 
+
+//$ null chaining operator
+/* class Person {
+    public $birthday;
+}
+$person1 = new Person;
+$person1->birthday = new DateTime('10-05-1956');
+$birthday = $person1?->birthday?->format('d-m-Y');
+echo $birthday; */
 
 
 //% Proprietà promosse
 /* class MyClass {
-    public function __construct(public int $a) {}
+    public function __construct(public int $a = 123) {}
 }
-$obj = new MyClass(123);
+$obj = new MyClass;
 echo $obj->a;  // 123
 echo $obj->a = 10;  // 10 */
 
+//* Proprietà readonly
 /* class MyClass {
     public function __construct(public readonly int $a) {}
     function getA() {
@@ -186,8 +186,6 @@ echo $obj->a; // 123 */
 
 
 
-
-
 //% Distruttore
 /* class Libro {
     public $titolo;
@@ -196,7 +194,7 @@ echo $obj->a; // 123 */
         $this->titolo = $__titolo;
     }
     function __destruct() {
-        echo "*** $this->titolo è stato distrutto***";
+        echo "*** $this->titolo è stato distrutto ***";
     }
 }
 $libro1 = new Libro("1984");
