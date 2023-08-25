@@ -159,7 +159,19 @@ $libro = new Libro("Cent'anni di solitudine", "Gabriel García Márquez", "Magic
     public function __construct(public int $a) {}
 }
 $obj = new MyClass(123);
-echo $obj->a;  // 123 */
+echo $obj->a;  // 123
+echo $obj->a = 10;  // 10 */
+
+/* class MyClass {
+    public function __construct(public readonly int $a) {}
+    function getA() {
+        return $this->a;
+    }
+}
+$obj = new MyClass(123);
+echo $obj->a; // 123 */
+//echo $obj->getA(); // 123
+//echo $obj->a = 10; // Errore fatale
 
 
 
