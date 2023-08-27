@@ -2,6 +2,6 @@
 
 class Clienti {
     function message() {
-        echo "Sono la classe Clienti.<br>";
+        return "Sono la classe Clienti.<br>";
     }
 }

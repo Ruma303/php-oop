@@ -1,9 +1,9 @@
 <?php
 
-class Fornitori
-{
-    function message()
-    {
-        echo "Sono la classe Fornitori.<br>";
+class Fornitori {
+    function message() {
+        return "Sono la classe Fornitori.<br>";
     }
 }
+
+
