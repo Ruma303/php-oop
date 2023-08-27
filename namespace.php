@@ -27,5 +27,3 @@ $name5 = new Name("Monica"); */
 $name6 = new Name("Alice");
 $name7 = new Hello();
 $name8 = new Hola(); */
-
-
