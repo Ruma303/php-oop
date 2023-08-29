@@ -202,3 +202,36 @@ $person1->name = "Hugo";
 echo '<pre>'; print_r($user1); echo '</pre>';
 echo '<pre>'; print_r($user2); echo '</pre>';
 var_dump($user1 === $user2); // false */
+
+
+
+//% Serializzazione
+
+
+//$ serialize()
+/* $data = ['a', 'b', 'c'];
+$serializedData = serialize($data);
+echo $serializedData; */
+// a:3:{i:0;s:1:"a";i:1;s:1:"b";i:2;s:1:"c";}
+
+
+//$ deserializzazione()
+/* $serializedData = 'a:3:{i:0;s:1:"a";i:1;s:1:"b";i:2;s:1:"c";}';
+$data = unserialize($serializedData);
+$data2 = unserialize(serialize($serializedData));
+print_r($data); // Array ( [0] => a [1] => b [2] => c )
+print_r($data2); */
+
+//$data = unserialize($serializedData, ["allowed_classes" => false]);
+
+//* Deep copy degli oggetti deserializzati
+/* class User {
+    function __construct(public string $value) {
+        $this->value = $value;
+    }
+}
+$user1 = new User('user1');
+$user2 = unserialize(serialize($user1));
+var_dump($user1); // object(User)#1 (1) { ["value"]=> string(5) "user1" }
+echo '<br>';
+var_dump($user2); // object(User)#2 (1) { ["value"]=> string(5) "user1" } */

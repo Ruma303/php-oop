@@ -3,17 +3,17 @@
 //% Metodi magici
 
 //$ __get()
-    /* class MyClass {
-        private $data = array();
-        public function __get($name) {
-            if (array_key_exists($name, $this->data)) {
-                return $this->data[$name];
-            }
+/* class MyClass {
+    private $data = array();
+    public function __get($name) {
+        if (array_key_exists($name, $this->data)) {
+            return $this->data[$name];
         }
     }
-    $obj = new MyClass();
-    echo ($obj->nonExistentProperty) ? $obj->nonExistentProperty
-    : 'Proprietà non esistente';  // Proprietà non esistente */
+}
+$obj = new MyClass();
+echo ($obj->nonExistentProperty) ? $obj->nonExistentProperty
+: 'Proprietà non esistente'; */  // Proprietà non esistente
 
 
 
