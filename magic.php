@@ -16,6 +16,24 @@ echo ($obj->nonExistentProperty) ? $obj->nonExistentProperty
 : 'Proprietà non esistente'; */  // Proprietà non esistente
 
 
+//% Metodi per serializzazione e deserializzazione di oggetti
+
+
+//$ __sleep()
+
+
+//$ __wakeup()
+
+
+//$ __serialize()
+
+
+//$ __unserialize()
+
+
+
+
+
 
 //% Overloading
 

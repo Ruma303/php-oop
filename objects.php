@@ -13,14 +13,14 @@
 }
 $personaggi[] = new Personaggio("Pippo", 1);
 $personaggi[] = new Personaggio("Pluto", 2);
-$personaggi[] = new Personaggio("Paperino", 3); */
-//echo '<pre>'; print_r($personaggi); echo '</pre><br>';
+$personaggi[] = new Personaggio("Paperino", 3);
+echo '<pre>'; print_r($personaggi); echo '</pre><br>'; */
 
 /* $edizioni['prima'] = $personaggi[0];
 $edizioni['seconda'] = $personaggi[1];
-$edizioni['terza'] = $personaggi[2]; */
-//echo '<pre>'; print_r($edizioni); echo '</pre><br>';
-//echo $personaggi[1] === $edizioni['seconda'] ? 'É lo stesso' : 'É una copia';
+$edizioni['terza'] = $personaggi[2];
+echo '<pre>'; print_r($edizioni); echo '</pre><br>'; */
+/* echo $personaggi[1] === $edizioni['seconda'] ? 'É lo stesso' : 'É una copia'; */
 
 
 // $ Iterare sugli array di oggetti
@@ -45,8 +45,8 @@ foreach($personaggi as $personaggio) {
     echo "<li>ID: $personaggio->character_id.
     Character: $personaggio->character_name.</li>";
 }
-echo '</ul>'; */
-
+echo '</ul>';
+ */
 /* echo '<ul>';
 foreach($personaggi as $personaggio) {
     echo $personaggio->getCharacter();
@@ -70,10 +70,10 @@ echo '</ul>'; */
     }
 
     public function getCharacter() {
-        $output = "<li>ID: $this->character_id. Nome: $this->character_name.</li>";
+        $output = "<li>Original values - ID: $this->original_character_id. Nome: $this->original_character_name.</li>";
         if ($this->updated_character) {
-            $output .= '<ul><li>Nuovo ID: ' .
-            $this->updated_character->id . '. Nuovo nome: ' .
+            $output .= '<ul><li>Edited values: ID: ' .
+            $this->updated_character->id . '. nome: ' .
             $this->updated_character->name . '</li></ul>';
         }
         return $output;
@@ -82,7 +82,7 @@ echo '</ul>'; */
     public function setCharacter($newChar, $newID) {
         $this->character_name = $newChar;
         $this->character_id = $newID;
-        return $this->updated_character = (object) [
+        return $this->updated_character = (object)[
             'name' => $this->character_name,
             'id' => $this->character_id
         ];
@@ -92,6 +92,7 @@ echo '</ul>'; */
 $personaggi[] = new Personaggio("Pippo", 1);
 $personaggi[] = new Personaggio("Pluto", 2);
 $personaggi[] = new Personaggio("Paperino", 3);
+
 $personaggi[0]->setCharacter("Qui", 4);
 $personaggi[1]->setCharacter("Quo", 5);
 $personaggi[2]->setCharacter("Qua", 6);
@@ -110,17 +111,27 @@ echo '</ul>'; */
 }
 $a = new MyClass;
 $a->prop = 1;
+//var_dump($a);
+
 $b = new MyClass;
 $b->prop = 1;
+//var_dump($b);
+
 var_dump($a == $b); // true
 var_dump($a === $b); // false
-$c = $a;
-var_dump($a === $c); // true */
 
+$c = $a;
+var_dump($a === $c); // true
+
+$b->prop = 99;
+echo $a->prop . '<br>';
+
+$c->prop = 10;
+echo $a->prop;
+ */
 
 
 //$ Confrontare oggetti personalizzati
-
 /* class User {
     public $id;
     public $name;
@@ -132,12 +143,15 @@ var_dump($a === $c); // true */
 $user1 = new User;
 $user1->id = 1;
 $user1->name = 'Alice';
+
 $user2 = new User;
 $user2->id = 1;
 $user2->name = 'Bob';
+
 $user3 = new User;
 $user3->id = 2;
 $user3->name = 'Charlie';
+
 var_dump($user1->uguale($user2)); // true
 var_dump($user1->uguale($user3)); // false */
 
@@ -155,9 +169,11 @@ var_dump($user1->uguale($user3)); // false */
 $user1 = new User("Ariel");
 $user2 = $user1;
 echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
+
 echo '<br>';
 echo '<pre>'; print_r($user1); echo '</pre>';
 echo '<pre>'; print_r($user2); echo '</pre>';
+
 $user2->username = "Mickey";
 echo $user1->username . '<br>';
 echo $user2->username . '<br>'; */
@@ -172,13 +188,15 @@ echo $user2->username . '<br>'; */
 }
 $user1 = new User("Ariel");
 $user2 = clone $user1;
+
 echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
 echo '<pre>'; print_r($user1); echo '</pre>';
 echo '<pre>'; print_r($user2); echo '</pre>';
+
 $user2->username = "Mickey";
 echo $user1->username . '<br>';
-echo $user2->username . '<br>';
- */
+echo $user2->username . '<br>'; */
+
 
 
 //$ Deep Copy
@@ -188,25 +206,30 @@ echo $user2->username . '<br>';
         $this->name=$n;
     }
 }
+
 class User {
     public $person;
     function __clone(){
         $this->person = clone $this->person;
     }
 }
+
 $person1 = new Person("Ariel");
+
 $user1 = new User;
 $user1->person = $person1;
+
 $user2 = clone $user1;
 $person1->name = "Hugo";
+
 echo '<pre>'; print_r($user1); echo '</pre>';
 echo '<pre>'; print_r($user2); echo '</pre>';
+
 var_dump($user1 === $user2); // false */
 
 
 
 //% Serializzazione
-
 
 //$ serialize()
 /* $data = ['a', 'b', 'c'];
@@ -218,11 +241,12 @@ echo $serializedData; */
 //$ deserializzazione()
 /* $serializedData = 'a:3:{i:0;s:1:"a";i:1;s:1:"b";i:2;s:1:"c";}';
 $data = unserialize($serializedData);
-$data2 = unserialize(serialize($serializedData));
 print_r($data); // Array ( [0] => a [1] => b [2] => c )
+$data2 = unserialize(serialize($serializedData));
 print_r($data2); */
 
-//$data = unserialize($serializedData, ["allowed_classes" => false]);
+/* $data = unserialize($serializedData, ["allowed_classes" => false]); */
+
 
 //* Deep copy degli oggetti deserializzati
 /* class User {

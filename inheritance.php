@@ -231,8 +231,8 @@ class Figlio extends Genitore {
     }
 }
 $figlio1 = new Figlio;
-$figlio1->myMethod(); */
-
+$figlio1->myMethod();
+ */
 
 //* Richiamare il costruttore della classe genitore
 /* class Articolo {
@@ -283,8 +283,8 @@ $alunno2 = new Alunno("Annalaura");
 $alunno3 = new Alunno("Enzo");
 
 echo 'Persone create: ' . Persona::$count . '<br>';
-echo 'Alunni creati: ' . Alunno::$count; */
-
+echo 'Alunni creati: ' . Alunno::$count;
+ */
 
 //% Costanti
 /* class Corso {
