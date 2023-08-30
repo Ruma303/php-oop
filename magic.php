@@ -2,35 +2,99 @@
 
 //% Metodi magici
 
-//$ __get()
-/* class MyClass {
-    private $data = array();
-    public function __get($name) {
-        if (array_key_exists($name, $this->data)) {
-            return $this->data[$name];
-        }
-    }
-}
-$obj = new MyClass();
-echo ($obj->nonExistentProperty) ? $obj->nonExistentProperty
-: 'Proprietà non esistente'; */  // Proprietà non esistente
-
 
 //% Metodi per serializzazione e deserializzazione di oggetti
 
-
 //$ __sleep()
+/* class Test {
+    private $a = "Privata";
+    public $b = "Pubblica";
+
+    public function getPrivate() {
+        return $this->a;
+    }
+
+    public function __sleep() {
+        return ['b'];
+    }
+}
+$test = new Test; */
+//echo serialize($test);
+
+/* $test2 = new Test;
+$test2 = unserialize(serialize($test));
+echo $test2->getPrivate(); */
 
 
 //$ __wakeup()
 
+/* class FileHandling {
+    private SplFileObject $fileObj;
+    public function __construct(
+        protected string $filename,
+        protected string $mode,
+    ) {
+        $this->fileObj = new SplFileObject($filename, $mode);
+    }
 
-//$ __serialize()
+    public function read() {
+        $fo = $this->fileObj;
+        return $fo->fread($fo->getSize());
+    }
+
+    public function __sleep() {
+        return ['filename', 'mode'];
+    }
+
+    public function __wakeup() {
+        $this->fileObj = new SplFileObject($this->filename, $this->mode);
+    }
+}
+
+$file1 = new FileHandling('./file1.txt', 'r');
+serialize($file1); //. Errore fatale
+$file2 = unserialize(serialize($file1));
+echo '<pre>'; var_dump($file2); echo '</pre>';
+echo $file2->read(); // Contenuto del file1.txt
+
+exit;
+echo $file1->read();
+*/
 
 
-//$ __unserialize()
+//$ __serialize() & __unserialize()
+/* class FileHandling {
+    private SplFileObject $fileObj;
+    public function __construct(
+        protected string $filename,
+        protected string $mode,
+    ) {
+        $this->fileObj = new SplFileObject($filename, $mode);
+    }
 
+    public function read() {
+        $fo = $this->fileObj;
+        return $fo->fread($fo->getSize());
+    }
 
+    public function __serialize() { */
+        //return ['filename', 'mode'];
+       /*  return [
+            'filename' => $this->filename,
+            'mode' => $this->mode
+        ]; */
+/*     }
+    public function __unserialize(array $data){
+        echo '<pre>'; print_r($data); echo '</pre>';
+        //$this->fileObj = new SplFileObject($data['filename'], $data['mode']);
+    }
+} */
+
+/* $file1 = new FileHandling('./file1.txt', 'r');
+$file2 = unserialize(serialize($file1));
+echo '<pre>'; var_dump($file2); echo '</pre>';
+echo $file2->read(); // Contenuto del file1.txt
+ */
 
 
 
@@ -67,45 +131,63 @@ echo $obj->property; // Accesso a 'property' e stampa 'value'
 isset($obj->property); // Controllo se 'property' è impostato e restituisce true
 unset($obj->property); // Rimozione di 'property' */
 
+
+
 //$ Method Overloading
 
 //* __call()
 /* class MyClass {
-    public function __call($name, $arguments) {
-        echo "Chiamata del metodo '$name' con argomenti: "
-        . implode(', ', $arguments);
+    private function fn1(int $a, int $b) : int {
+        return $a + $b;
     }
-}
-
-$obj = new MyClass();
-$obj->myMethod('arg1', 'arg2'); */
-
-//* __callStatic()
-
-/* class MyClass {
-    public static function __callStatic($name, $arguments) {
-        if ($name == 'myMethod') {
-            switch (count($arguments)) {
-                case 1:
-                    return self::myMethodWithOneArgument($arguments[0]);
-                case 2:
-                    return self::myMethodWithTwoArguments($arguments[0], $arguments[1]);
-                default:
-                    throw new Exception("Numero di argomenti non valido");
-            }
+    public function __call(string $method, array $args) {
+        if (method_exists($this, $method)) {
+            return $this->$method(...$args);
+        } else {
+            echo "Il metodo {$method} non esiste";
         }
     }
-    private static function myMethodWithOneArgument($arg1) {
-        echo "Chiamata del metodo statico myMethod con un argomento: $arg1<br>";
-    }
+}
+$obj = new MyClass();
+echo $obj->fn1(5, 10); // 15 */
 
-    private static function myMethodWithTwoArguments($arg1, $arg2) {
-        echo "Chiamata del metodo statico myMethod con due argomenti: $arg1, $arg2<br>";
+
+//# Richiamare metodi di altre classi
+/* class Notification {
+public function sendNotification() {
+    echo "Notifica inviata.";
+    }
+}
+class Utente {
+    public function __construct(public Notification $notification) {}
+    public function __call(string $method, array $args) : mixed {
+        if(method_exists($this->notification, $method)) {
+            return $this->notification->$method(...$args);
+        } else {
+            echo "Errore! Il metodo $method non esiste!";
+        }
+    }
+}
+$user1 = new Utente(new Notification);
+$user1->sendNotification(); // Notifica inviata. */
+
+
+//* __callStatic()
+/* class CreaUtente {
+    public function crea() {
+        return "Utente creato correttamente.";
     }
 }
 
-MyClass::myMethod('arg1'); // Chiamata del metodo statico myMethod con un argomento: arg1
-MyClass::myMethod('arg1', 'arg2'); // Chiamata del metodo statico myMethod con due argomenti: arg1, arg2 */
+class Utente {
+    public static function __callStatic($method, $args) {
+        if ($method === 'creaUtente') {
+            $creaUtente = new CreaUtente();
+            echo $creaUtente->crea();
+        } else {
+            echo "Errore! Il metodo statico $method non esiste!";
+        }
+    }
+}
 
-//% Serializzazione e suoi metodi
-//$ Metodi sleep(), wakeup(), serialize(), unserialize()
+Utente::creaUtente(); // Utente creato correttamente. */
