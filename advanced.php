@@ -23,14 +23,13 @@ $percorso = new Corso($corsoPHP); */
         print_r($corso);
         echo '</pre><br>';
     }
-
 }
 class PHP { private $corso = "Corso PHP"; }
 class MySQL { private $corso = "Corso MySQL"; }
 $corsoPHP = new PHP;
 $corsoMySQL = new MySQL;
-$percorso = new Corso($corsoMySQL);
-*/
+$percorso = new Corso($corsoMySQL); */
+
 
 
 //$ Valori di ritorno
@@ -41,6 +40,7 @@ $percorso = new Corso($corsoMySQL);
 }
 class PHP { private $corso = "Corso PHP"; }
 class MySQL { private $corso = "Corso MySQL"; }
+
 function creaCorso(string $tipo): Corso {
     if ($tipo === 'PHP') {
         return new Corso(new PHP);
@@ -58,10 +58,11 @@ $corsoMySQL = creaCorso('MySQL'); */
 //% Metodi e classi final
 /* final class Persona {
     public $nome;
-    function __construct($n) {
+    final function __construct($n) {
         $this->nome = $n;
     }
 }
+
 class User extends Persona {
     public $username;
     function __construct($n, $u) {
@@ -77,16 +78,20 @@ var_dump($user1); */
 /* abstract class Animale {
     abstract public function faVerso();
 }
-class Cane extends Animale {
+ */
+// $animale = new Animale();
+
+/* class Cane extends Animale {
     public function faVerso() {
         echo 'Classe genitore: ' . get_parent_class($this) . '<br>';
         echo 'Classe figlia: ' . __CLASS__ . '<br>';
         return "Bau!";
     }
 }
-$cane = new Cane();
-echo $cane->faVerso(); */
 
+$cane = new Cane();
+echo $cane->faVerso();
+ */
 
 
 //% Interfacce
@@ -110,12 +115,12 @@ class Laravel implements Lesson, Documentation {
         echo '<h3>Lezioni del corso: </h3><ul>';
         foreach ($this->lessons as $lesson) {
             echo '<li>' . $lesson . '</li>';
-        }echo '</ul>';
+        } echo '</ul>';
     }
     public function setDocumentation(array $documentations): void {
         $this->documentation = $documentations;
     }
-    public function getDocumentation(): void {
+        public function getDocumentation(): void {
         echo '<h3>Documentazione del corso: </h3><ul>';
         foreach ($this->documentation as $documentation) {
             echo '<li>' . $documentation . '</li>';
@@ -139,6 +144,7 @@ $laravel->getDocumentation(); */
         $this->nomeClasse = $class;
     }
 }
+
 trait Comportamenti {
     public function saluta() {
         echo "Ciao! Sono il metodo: " . __METHOD__
@@ -192,8 +198,9 @@ class ClasseA {
     }
 }
 $a = new ClasseA;
-$a->fn2();
- */
+$a->fn2(); */
+
+
 
 //* Usare metodi astratti nei Traits
 /* trait Trait1 {
@@ -223,6 +230,8 @@ class ClasseA {
 $a = new ClasseA;
 $a->fn1("Hello World"); */
 
+
+
 //* Utilizzare proprietà di classe nei metodi del Trait
 //. Cattiva pratica
 /* trait Trait1 {
@@ -234,10 +243,11 @@ $a->fn1("Hello World"); */
 class ClasseA {
     public $p1;
     use Trait1;
-
 }
 $a = new ClasseA;
-$a->fn1("Hello World"); */
+$a->fn1("Hello World");
+ */
+
 
 
 //% Costruttore privato
@@ -252,6 +262,7 @@ $a->fn1("Hello World"); */
         return new static();
     }
 }
+
 $istanza1 = Classe::createWithSelf();
 $istanza2 = Classe::createWithStatic();
 
@@ -278,7 +289,9 @@ var_dump($b instanceof A); // true */
 /* class A {}
 class B extends A {}
 class C extends B {} $c = new C;
-var_dump($c instanceof A); // true */
+var_dump($c instanceof A); // true
+ */
+
 
 //* Interfacce
 /* interface MyInterface {
@@ -300,10 +313,12 @@ var_dump($a instanceof MyInterface); // true */
 }
 $a = new A;
 $a->fn(); // A
+
 class B extends A {} $b = new B;
 class C extends B {} $c = new C;
 echo get_class($b); // B
-echo get_class($c); // C */
+echo get_class($c); // C
+ */
 
 
 //$ ::class
@@ -314,11 +329,12 @@ echo get_class($c); // C */
 }
 $a = new A;
 $a->fn(); // A
+
 class B extends A {} $b = new B;
 class C extends B {} $c = new C;
 echo $b::class; // B
-echo $c::class; // C
- */
+echo $c::class; // C */
+
 
 
 //% Classi anonime
@@ -327,13 +343,14 @@ echo $c::class; // C
         return "Hello, world!";
     }
 };
-echo $obj->hello(); // Hello, world! */
+echo $obj->hello(); // Hello, world!
+ */
 
 
 //$ Costruttori delle classi anonime
 /* $obj = new class('Albert') {
     public function __construct(public string $name) {
-    echo "Ciao $name";
+        echo "Ciao $name";
     }
 };
 echo '<pre>'; print_r($obj); echo '</pre>';
@@ -347,11 +364,11 @@ echo '<pre>'; print_r($obj); echo '</pre>';
 }
 $obj = new class('Albert') extends A {
     public function __construct(public string $name) {
-    echo "Sono $name e ho ";
+        echo "Sono $name e ho $this->age";
     }
 };
-echo '<pre>'; print_r($obj); echo '</pre>';
- */
+echo '<pre>'; print_r($obj); echo '</pre>'; */
+
 
 
 //$ Implementazione di interfacce nelle classi anonime
@@ -363,26 +380,31 @@ $obj = new class implements MyInterface {
         return 'Ciao!';
     }
 };
-echo $obj->saluta(); // Ciao! */
+echo $obj->saluta(); // Ciao!
+ */
 
 
 //$ Classi annidate
-
 /* class MyParent {
-    public int $a = 10;
+    public int $a;
+    public function __construct($a) {
+        $this->a = $a;
+    }
     public function info() {
         return new class($this->a) {
-            public function __construct(public int $a) {}
+            public function __construct(public int $a) {
+                echo "Costruttore interno invocato. Val: $a <br>";
+            }
             public function getA() {
                 echo $this->a;
             }
         };
     }
 }
-$newMyParent = new MyParent;
-$obj = $newMyParent->info();
-$obj->getA(); // 10 */
-
+$newMyParent = new MyParent(10); //* Classe superiore
+$obj = $newMyParent->info(); //* istanziando classe anonima intera
+$obj->getA(); // 10
+ */
 
 //$ Estendere classi annidate
 /* class MyParent {
