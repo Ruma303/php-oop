@@ -180,7 +180,7 @@ echo $user2->username . '<br>'; */
 
 
 //, Shallow Copy
-class User {
+/* class User {
     public $value;
 }
 
@@ -208,38 +208,42 @@ $cloned->personObj->value = 'Modificato';
 echo $original->personObj->value; // Modificato
 echo '<br>';
 echo $cloned->personObj->value;   // Modificato
+echo '<br>';
 
-echo $original == $cloned ? "Sono uguali" : "Sono diversi"; // Sono uguali
+echo $original == $cloned ? "Sono uguali" : "Sono diversi"; // Sono uguali */
 
 
 
 //, Deep Copy
-/* class Person {
-    public $name;
-    function __construct($n) {
-        $this->name=$n;
+/* class User { public $value; }
+class Person {
+    public $personObj;
+    public function __construct() {
+        $this->personObj = new User();
     }
-}
+    public function __clone() {
+        $this->personObj = clone $this->personObj; //! Notare clone
+    }}
 
-class User {
-    public $person;
-    function __clone(){
-        $this->person = clone $this->person;
-    }
-}
+$original = new Person();
+$original->personObj->value = 'Originale';
 
-$person1 = new Person("Ariel");
+$cloned = clone $original; //* Deep copy di $original
+echo $original->personObj->value; // 'Originale'
+echo '<br>';
+echo $cloned->personObj->value; // 'Originale'
+echo '<br>';
 
-$user1 = new User;
-$user1->person = $person1;
+//# Modifichiamo la proprietà dell'oggetto secondario in $cloned
+$cloned->personObj->value = 'Modificato';
 
-$user2 = clone $user1;
-$person1->name = "Hugo";
+//# Mostriamo i valori per confrontare
+echo $original->personObj->value; //! 'Originale'. $original non cambia
+echo '<br>';
+echo $cloned->personObj->value;   // 'Modificato'
+echo '<br>';
 
-echo '<pre>'; print_r($user1); echo '</pre>';
-echo '<pre>'; print_r($user2); echo '</pre>';
-
-var_dump($user1 === $user2); // false */
+echo $original == $cloned ? "Sono uguali" : "Sono diversi"; // Sono diversi */
 
 
 
