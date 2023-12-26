@@ -2,7 +2,7 @@
 
 //% Oggetti
 
-//$ Array di oggetti
+//, Array di oggetti
 /* class Personaggio {
     private $character_name;
     private $character_id;
@@ -54,7 +54,7 @@ foreach($personaggi as $personaggio) {
 echo '</ul>'; */
 
 
-//$ Condizioni e valori di default
+//, Condizioni e valori di default
 /* class Personaggio {
     private $character_name;
     private $character_id;
@@ -105,7 +105,7 @@ echo '</ul>'; */
 
 //% Confronto fra oggetti
 
-//$ Confronto tra istanze di una classe
+//, Confronto tra istanze di una classe
 /* class MyClass {
     public $prop;
 }
@@ -131,7 +131,7 @@ echo $a->prop;
  */
 
 
-//$ Confrontare oggetti personalizzati
+//, Confrontare oggetti personalizzati
 /* class User {
     public $id;
     public $name;
@@ -159,7 +159,7 @@ var_dump($user1->uguale($user3)); // false */
 
 //% Copiare gli oggetti
 
-//$ Assegnamento oggetti
+//, Assegnamento oggetti
 /* class User {
     public $username;
     function __construct($n) {
@@ -179,27 +179,41 @@ echo $user1->username . '<br>';
 echo $user2->username . '<br>'; */
 
 
-//$ Shallow Copy
-/* class User {
-    public $username;
-    function __construct($n) {
-        $this->username=$n;
+//, Shallow Copy
+class User {
+    public $value;
+}
+
+class Person {
+    public $personObj;
+
+    public function __construct() {
+        $this->personObj = new User();
     }
 }
-$user1 = new User("Ariel");
-$user2 = clone $user1;
 
-echo $user1 == $user2 ? "Sono uguali" : "Sono diversi";
-echo '<pre>'; print_r($user1); echo '</pre>';
-echo '<pre>'; print_r($user2); echo '</pre>';
+$original = new Person();
+$original->personObj->value = 'Originale';
 
-$user2->username = "Mickey";
-echo $user1->username . '<br>';
-echo $user2->username . '<br>'; */
+$cloned = clone $original; //* Shallow copy di $original
+echo $original->personObj->value; // Originale
+echo '<br>';
+echo $cloned->personObj->value; // Originale
+echo '<br>';
+
+//# Modifichiamo la proprietà dell'oggetto secondario in $cloned
+$cloned->personObj->value = 'Modificato';
+
+//# Mostriamo i valori per confrontare
+echo $original->personObj->value; // Modificato
+echo '<br>';
+echo $cloned->personObj->value;   // Modificato
+
+echo $original == $cloned ? "Sono uguali" : "Sono diversi"; // Sono uguali
 
 
 
-//$ Deep Copy
+//, Deep Copy
 /* class Person {
     public $name;
     function __construct($n) {
@@ -231,14 +245,14 @@ var_dump($user1 === $user2); // false */
 
 //% Serializzazione
 
-//$ serialize()
+//, serialize()
 /* $data = ['a', 'b', 'c'];
 $serializedData = serialize($data);
 echo $serializedData; */
 // a:3:{i:0;s:1:"a";i:1;s:1:"b";i:2;s:1:"c";}
 
 
-//$ deserializzazione()
+//, deserializzazione()
 /* $serializedData = 'a:3:{i:0;s:1:"a";i:1;s:1:"b";i:2;s:1:"c";}';
 $data = unserialize($serializedData);
 print_r($data); // Array ( [0] => a [1] => b [2] => c )
